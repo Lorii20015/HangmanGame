@@ -11,7 +11,6 @@ namespace Šibenica
         public static string guess;
         public static List<char> displayedWordList = new List<char>();
         public static List<char> guessesList = new List<char>();
-        public static string[] moreWordsArray;
         public static List<string> moreWordsList = new List<string>();
         public static int end;
         static void Main(string[] args)
@@ -48,8 +47,8 @@ namespace Šibenica
                     {
                         Console.Write("_");
                     }
-                    Console.Write("\n");
-                    while (guess != hiddenWord)
+                    Console.WriteLine("\n");
+                    while (guess != hiddenWord && end != 1)
                     {
                         Console.Write("Enter the letter or word you'd like to try:");
                         guess = Console.ReadLine().ToLower();
@@ -85,11 +84,11 @@ namespace Šibenica
                                 displayedWordList.Clear();
                              //   Console.WriteLine(hiddenWord);
                             }
-                            else if (hiddenWord == null)
+                            else if (hiddenWord.Length < 1)
                             {
                                 Console.WriteLine("Please, don't hit enter without typing anything!");
                             }
-                            else if (hiddenWord.Contains(guess) == true && guess != hiddenWord)
+                            else if (hiddenWord.Contains(guess) == true && guess != hiddenWord && hiddenWord.Length !< 0)
                             {
                                 Console.WriteLine("It is part of the word! (It won't show it as guessed part of the word, sorry!)");
                             }
@@ -99,8 +98,11 @@ namespace Šibenica
                             Console.WriteLine("Nope, try some other letter or word! :)");
                         }
                     }
+                    if (guess == hiddenWord)
+                    {
                         Console.WriteLine("Congratulations! You've guessed the word and won the game! :D");
                         end = 1;
+                    }
                 }
                 else if (playerNum == "no")
                 {
@@ -126,7 +128,7 @@ namespace Šibenica
                         Console.Write("_");
                     }
                     Console.Write("\n");
-                    while (guess != hiddenWord)
+                    while (guess != hiddenWord && end != 1)
                     {
                         Console.Write("Enter the letter or word/s you'd like to try:");
                         guess = Console.ReadLine().ToLower();
@@ -162,11 +164,11 @@ namespace Šibenica
                                 displayedWordList.Clear();
                                 //   Console.WriteLine(hiddenWord);
                             }
-                            else if (hiddenWord == null)
+                            else if (hiddenWord.Length < 1)
                             {
                                 Console.WriteLine("Please, don't hit enter without typing anything!");
                             }
-                            else if (hiddenWord.Contains(guess) == true && guess != hiddenWord)
+                            else if (hiddenWord.Contains(guess) == true && guess != hiddenWord && hiddenWord.Length !< 1)
                             {
                                 Console.WriteLine("It is part of the word or phrase! (It won't show it as guessed part of the word, sorry!)");
                             }
@@ -176,8 +178,11 @@ namespace Šibenica
                             Console.WriteLine("Nope, try some other letter or word! :)");
                         }
                     }
-                    Console.WriteLine("Congratulations! You've guessed the word and won the game! :D");
-                    end = 1;
+                    if( guess == hiddenWord)
+                    {
+                        Console.WriteLine("Congratulations! You've guessed the word and won the game! :D");
+                        end = 1;
+                    }
                 }
                 else
                 {
